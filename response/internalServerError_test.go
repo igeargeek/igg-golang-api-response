@@ -21,9 +21,9 @@ func (suite *ResponseInternalServerErrorTestSuite) TestDefaultMessage() {
 }
 
 func (suite *ResponseInternalServerErrorTestSuite) TestCustomMessage() {
-	status, response := InternalServerError("Your request server error", "", "GET_PROFILE_ERROR")
+	status, response := InternalServerError("Your request server error", "test.go:21 error something", "GET_PROFILE_ERROR")
 	resJson, _ := json.Marshal(response)
-	expected := `{"message":"Your request server error","code":"GET_PROFILE_ERROR"}`
+	expected := `{"message":"Your request server error","code":"GET_PROFILE_ERROR","detail":"test.go:21 error something"}`
 	assert.Equal(suite.T(), expected, string(resJson))
 	assert.Equal(suite.T(), 500, status)
 }

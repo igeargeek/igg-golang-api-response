@@ -7,7 +7,7 @@ type CommonResponse struct {
 type ErrorResponse struct {
 	Message string `json:"message" bson:"message"`
 	Code    string `json:"code" bson:"code"`
-	Detail  string `json:"-" bson:"-"`
+	Detail  string `json:"detail,omitempty" bson:"detail,omitempty"`
 }
 
 type ValidateFail struct {
